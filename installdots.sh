@@ -27,12 +27,12 @@ cd yay
 pacman -Qqm | grep -q "yay" || sudo -u "$name" makepkg --noconfirm -si
 
 # Install packages (non-AUR)
-pac=$(curl -s "https://raw.githubusercontent.com/bilgehankaya/temp/main/pacman.txt")
+pac=$(curl -s "https://raw.githubusercontent.com/bilgehankaya/dotins/github/pacman.txt")
 pacman --noconfirm --needed -S $(comm -12 <(pacman -Slq | sort) <(echo -e "$pac" | sort))
 
 # Install AUR packages
 aurall=$(pacman -Qqm)
-curl -s 'https://raw.githubusercontent.com/bilgehankaya/temp/main/aur.txt' | while read line;
+curl -s "https://raw.githubusercontent.com/bilgehankaya/dotins/github/aur.txt" | while read line;
 do
     echo "$aurall" | grep -q "^$line$" && echo "$line is already installed\!" && continue
     sudo -u "$name" yay -S --noconfirm "$line"
