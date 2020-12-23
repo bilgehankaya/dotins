@@ -34,7 +34,7 @@ pacman --noconfirm --needed -S $(comm -12 <(pacman -Slq | sort) <(echo -e "$pac"
 aurall=$(pacman -Qqm)
 curl -s "https://raw.githubusercontent.com/bilgehankaya/dotins/github/aur.txt" | while read line;
 do
-    echo "$aurall" | grep -q "^$line$" && echo "$line is already installed\!" && continue
+    echo "$aurall" | grep -q "^$line$" && echo "$line is already installed!" && continue
     sudo -u "$name" yay -S --noconfirm "$line"
 done
 
@@ -96,12 +96,12 @@ systemctl enable cronie.service
 systemctl start cronie.service
 
 # Remove libxft amnd install libxft-bgra-git
-pacman --noconfirm -Rdd libxft
-echo "$aurall" | grep -q "^libxft-bgra-git$" || sudo -u "$name" yay -S --noconfirm libxft-bgra-git
+pacman -Qq | grep -q "^libxft$" && pacman --noconfirm -Rdd libxft
+pacman -Qqm | grep -q "^libxft-bgra-git$" || sudo -u "$name" yay -S --noconfirm libxft-bgra-git
 
 # Change permissions
 sed -i "/$name/d" /etc/sudoers
 echo -e "%wheel ALL=(ALL) ALL # Edited by $name\n%wheel ALL=(ALL) NOPASSWD: /usr/bin/shutdown,/usr/bin/reboot,/usr/bin/systemctl suspend,/usr/bin/wifi-menu,/usr/bin/mount,/usr/bin/umount,/usr/bin/pacman -Syu,/usr/bin/pacman -Syyu,/usr/bin/packer -Syu,/usr/bin/packer -Syyu,/usr/bin/systemctl restart NetworkManager,/usr/bin/rc-service NetworkManager restart,/usr/bin/pacman -Syyu --noconfirm,/usr/bin/loadkeys,/usr/bin/yay,/usr/bin/pacman -Syyuw --noconfirm # Edited by $name" >> /etc/sudoers
 
 # Last message
-echo "\nInstallation is completed for user $name!"
+echo "Installation is completed for user $name!"

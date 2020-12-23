@@ -132,7 +132,6 @@ xorg-xsetroot
 xorg-xwininfo
 xwallpaper
 yarn
-yay
 youtube-dl
 zathura
 zathura-pdf-mupdf
