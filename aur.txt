@@ -5,7 +5,6 @@ dragon-drag-and-drop
 glow
 gtk-theme-arc-gruvbox-git
 lf
-libxft-bgra-git
 tremc-git
 ttf-symbola
 visual-studio-code-bin
