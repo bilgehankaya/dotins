@@ -22,9 +22,10 @@ pacman --noconfirm -Sy archlinux-keyring
 
 # yay (AUR helper) install
 pacman --noconfirm --needed -S git go curl base-devel
-sudo -u "$name" git clone https://aur.archlinux.org/yay.git
-cd yay
-pacman -Qqm | grep -q "yay" || sudo -u "$name" makepkg --noconfirm -si
+pacman -Qq | grep -q "yay" ||
+(sudo -u "$name" git clone https://aur.archlinux.org/yay.git &&
+cd yay &&
+sudo -u "$name" makepkg --noconfirm -si)
 
 # Install packages (non-AUR)
 pac=$(curl -s "https://raw.githubusercontent.com/bilgehankaya/dotins/github/pacman.txt")
