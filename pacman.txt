@@ -76,7 +76,6 @@ pcmanfm
 picom
 pkgconf
 poppler
-powertop
 pulseaudio-alsa
 pulseaudio-bluetooth
 pulsemixer
@@ -93,18 +92,6 @@ stalonetray
 sudo
 sxiv
 texinfo
-texlive-bibtexextra
-texlive-core
-texlive-fontsextra
-texlive-formatsextra
-texlive-games
-texlive-humanities
-texlive-latexextra
-texlive-music
-texlive-pictures
-texlive-pstricks
-texlive-publishers
-texlive-science
 tk
 transmission-cli
 ttf-font-awesome
