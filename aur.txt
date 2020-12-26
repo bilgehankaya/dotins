@@ -6,6 +6,7 @@ glow
 gtk-theme-arc-gruvbox-git
 lf
 tremc-git
+ttf-ms-fonts
 ttf-symbola
 visual-studio-code-bin
 zsh-fast-syntax-highlighting

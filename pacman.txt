@@ -24,6 +24,7 @@ exfat-utils
 fakeroot
 ffmpeg
 ffmpegthumbnailer
+flameshot
 flex
 fzf
 gcc
