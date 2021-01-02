@@ -1,13 +1,10 @@
-abook
 alacritty
 arandr
 atool
 autoconf
 automake
-base
 bashtop
 bc
-binutils
 bison
 bluez
 bluez-utils
@@ -70,7 +67,6 @@ ntp
 p7zip
 pamixer
 pandoc
-patch
 pavucontrol
 pcmanfm
 picom
@@ -105,7 +101,6 @@ vim
 virtualbox
 virtualbox-host-modules-arch
 vlc
-which
 xcape
 xclip
 xcompmgr
@@ -116,10 +111,12 @@ xorg-xbacklight
 xorg-xdpyinfo
 xorg-xinit
 xorg-xprop
+xorg-xsetroot
 xorg-xwininfo
 xwallpaper
 yarn
 youtube-dl
 zathura
 zathura-pdf-mupdf
+zathura-cb
 zip
