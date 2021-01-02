@@ -24,7 +24,6 @@ ffmpegthumbnailer
 flameshot
 flex
 fzf
-gcc
 gimp
 git
 gnome-keyring
