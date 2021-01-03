@@ -39,26 +39,15 @@ do
     sudo -u "$name" yay -S --noconfirm "$line"
 done
 
-# Install dotfiles
-# dotrepo="https://github.com/bilgehankaya/dotfiles.git"
-# sudo -u "$name" mkdir -p "/home/$name/tmp"
-# sudo -u "$name" git clone --recursive -b "master" --depth 1 "$dotrepo" "/home/$name/tmp"
-# sudo -u "$name" cp -rfT  "/home/$name/tmp" "/home/$name"
-# rm -rf "/home/$name/tmp/"
-
 # Make install suckless builds (dwm, dwmblock, dmenu, st)
 for dir in $(ls -d /home/$name/.local/src/*)
 do
     make -C $dir && make -C $dir install
 done
 
-# Bluetooth
-grep -q "module-switch-on-connect" /etc/pulse/default.pa || echo load-module module-switch-on-connect >> /etc/pulse/default.pa
-
 # System beep off
 rmmod pcspkr
 echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf
-
 
 # Zsh is the default shell now
 chsh -s /bin/zsh "$name"
