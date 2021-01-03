@@ -29,7 +29,7 @@ sudo -u "$name" makepkg --noconfirm -si)
 
 # Install packages (non-AUR)
 pac=$(curl -s "https://raw.githubusercontent.com/bilgehankaya/dotins/github/pacman.txt")
-pacman --noconfirm --needed -S $(comm -12 <(pacman -Slq | sort) <(echo -e "$pac" | sort))
+pacman --noconfirm --needed -S $(echo $pac)
 
 # Install AUR packages
 aurall=$(pacman -Qqm)
@@ -59,6 +59,7 @@ grep -q "module-switch-on-connect" /etc/pulse/default.pa || echo load-module mod
 # System beep off
 rmmod pcspkr
 echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf
+
 
 # Zsh is the default shell now
 chsh -s /bin/zsh "$name"
