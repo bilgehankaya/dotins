@@ -5,6 +5,7 @@ dragon-drag-and-drop
 glow
 gtk-theme-arc-gruvbox-git
 lf
+pandoc-bin
 tremc-git
 ttf-ms-fonts
 ttf-symbola
