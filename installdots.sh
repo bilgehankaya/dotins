@@ -47,10 +47,9 @@ done
 # rm -rf "/home/$name/tmp/"
 
 # Make install suckless builds (dwm, dwmblock, dmenu, st)
-for folder in $(ls -d /home/$name/.local/src/*)
+for dir in $(ls -d /home/$name/.local/src/*)
 do
-    cd $folder
-    make && make install
+    make -C $dir && make -C $dir install
 done
 
 # Bluetooth
