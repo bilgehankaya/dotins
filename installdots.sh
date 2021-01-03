@@ -60,9 +60,6 @@ grep -q "module-switch-on-connect" /etc/pulse/default.pa || echo load-module mod
 rmmod pcspkr
 echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf
 
-# Install and ueberzug
-sudo -u "$name" pip3 install ueberzug
-
 # Zsh is the default shell now
 chsh -s /bin/zsh "$name"
 sudo -u "$name" mkdir -p "/home/$name/.cache/zsh/"
