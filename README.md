@@ -21,14 +21,7 @@
 DiscoverableTimeout = 0
 Discoverable=true
 ```
-### Auto power-on after boot
 
-```
-/etc/bluetooth/main.conf
-------------------------
-[Policy]
-AutoEnable=true
-```
 ### PulseAudio
 
 ```
