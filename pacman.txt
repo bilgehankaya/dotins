@@ -1,5 +1,6 @@
 alacritty
 arandr
+atool
 bashtop
 bc
 bluez
