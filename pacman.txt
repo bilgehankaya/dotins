@@ -1,6 +1,7 @@
 alacritty
 arandr
 atool
+awesome-terminal-fonts
 bashtop
 bc
 bluez
