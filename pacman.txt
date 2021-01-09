@@ -62,7 +62,6 @@ reflector
 rsync
 sdcv
 slock
-stalonetray
 sudo
 sxiv
 transmission-cli
