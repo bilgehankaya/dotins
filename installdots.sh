@@ -20,11 +20,12 @@ sed -i "s/-j2/-j$(nproc)/;s/^#MAKEFLAGS/MAKEFLAGS/" /etc/makepkg.conf
 # Refresh keyrings
 pacman --noconfirm -Sy archlinux-keyring
 
+aur_helper="paru"
 # yay (AUR helper) install
-pacman --noconfirm --needed -S git go curl base-devel
-pacman -Qq | grep -q "yay" ||
-(sudo -u "$name" git clone https://aur.archlinux.org/yay.git &&
-cd yay &&
+pacman --noconfirm --needed -S git rust curl base-devel
+pacman -Qq | grep -q "$aur_helper" ||
+(sudo -u "$name" git clone "https://aur.archlinux.org/$aur_helper.git" &&
+cd $aur_helper &&
 sudo -u "$name" makepkg --noconfirm -si)
 
 # Install packages (non-AUR)
@@ -36,7 +37,7 @@ aurall=$(pacman -Qqm)
 curl -s "https://raw.githubusercontent.com/bilgehankaya/dotins/github/aur.txt" | while read line;
 do
     echo "$aurall" | grep -q "^$line$" && echo "$line is already installed!" && continue
-    sudo -u "$name" yay -S --noconfirm "$line"
+    sudo -u "$name" "$aur_helper" -S --noconfirm "$line"
 done
 
 # Make install suckless builds (dwm, dwmblock, dmenu, st)
@@ -84,11 +85,11 @@ systemctl start cronie.service
 
 # Remove libxft amnd install libxft-bgra-git
 pacman -Qq | grep -q "^libxft$" && pacman --noconfirm -Rdd libxft
-pacman -Qqm | grep -q "^libxft-bgra-git$" || sudo -u "$name" yay -S --noconfirm libxft-bgra-git
+pacman -Qqm | grep -q "^libxft-bgra-git$" || sudo -u "$name" "$aur_helper" -S --noconfirm libxft-bgra-git
 
 # Change permissions
 sed -i "/$name/d" /etc/sudoers
-echo -e "%wheel ALL=(ALL) ALL # Edited by $name\n%wheel ALL=(ALL) NOPASSWD: /usr/bin/shutdown,/usr/bin/reboot,/usr/bin/systemctl suspend,/usr/bin/wifi-menu,/usr/bin/mount,/usr/bin/umount,/usr/bin/pacman -Syu,/usr/bin/pacman -Syyu,/usr/bin/packer -Syu,/usr/bin/packer -Syyu,/usr/bin/systemctl restart NetworkManager,/usr/bin/rc-service NetworkManager restart,/usr/bin/pacman -Syyu --noconfirm,/usr/bin/loadkeys,/usr/bin/yay,/usr/bin/pacman -Syyuw --noconfirm # Edited by $name" >> /etc/sudoers
+echo -e "%wheel ALL=(ALL) ALL # Edited by $name\n%wheel ALL=(ALL) NOPASSWD: /usr/bin/shutdown,/usr/bin/reboot,/usr/bin/systemctl suspend,/usr/bin/wifi-menu,/usr/bin/mount,/usr/bin/umount,/usr/bin/pacman -Syu,/usr/bin/pacman -Syyu,/usr/bin/packer -Syu,/usr/bin/packer -Syyu,/usr/bin/systemctl restart NetworkManager,/usr/bin/rc-service NetworkManager restart,/usr/bin/pacman -Syyu --noconfirm,/usr/bin/loadkeys,/usr/bin/$aur_helper,/usr/bin/pacman -Syyuw --noconfirm # Edited by $name" >> /etc/sudoers
 
 # Last message
 echo "Installation is completed for user $name!"
