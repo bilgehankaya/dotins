@@ -4,7 +4,7 @@
 [ -z "$1" ] && name="bilge" || (echo "User Name?: " ; read -r name)
 
 # Permissions for installation
-chown -R "$name":wheel "/home/$name"
+chown "$name":wheel "/home/$name"
 sed -i "/$name/d" /etc/sudoers
 echo -e "%wheel ALL=(ALL) NOPASSWD: ALL # Edited by $name" >> /etc/sudoers
 
