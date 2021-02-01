@@ -21,7 +21,7 @@ sed -i "s/-j2/-j$(nproc)/;s/^#MAKEFLAGS/MAKEFLAGS/" /etc/makepkg.conf
 pacman --noconfirm -Sy archlinux-keyring
 
 aur_helper="paru"
-# yay (AUR helper) install
+# AUR helper install
 pacman --noconfirm --needed -S git curl base-devel
 pacman -Qq | grep -q "$aur_helper" ||
 (sudo -u "$name" git clone "https://aur.archlinux.org/$aur_helper.git" &&
