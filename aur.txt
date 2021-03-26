@@ -6,6 +6,7 @@ glow
 gtk-theme-arc-gruvbox-git
 lf
 pandoc-bin
+simple-mtpfs
 tremc-git
 ttf-ms-fonts
 ttf-symbola
