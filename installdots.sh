@@ -19,7 +19,7 @@ sed -i "s/-j2/-j$(nproc)/;s/^#MAKEFLAGS/MAKEFLAGS/" /etc/makepkg.conf
 # Refresh keyrings
 pacman --noconfirm -Sy archlinux-keyring
 
-aur_helper="yay"
+aur_helper="paru"
 # AUR helper install
 pacman --noconfirm --needed -S git curl base-devel
 pacman -Qq | grep -q "$aur_helper" ||
