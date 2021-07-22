@@ -38,6 +38,7 @@ mpc
 mpd
 mpv
 mysql-workbench
+ncdu
 ncmpcpp
 neofetch
 neovim
