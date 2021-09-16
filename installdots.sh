@@ -14,7 +14,7 @@ sed -i "s/#VerbosePkgLists/ILoveCandy/" /etc/pacman.conf
 grep -q "# Edited by $name" /etc/pacman.conf || printf "\n# Edited by %s\n%s\n%s" "$name" "[multilib]" "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
 
 # Use all cores for compilation.
-sed -i "s/-j2/-j$(nproc)/;s/^#MAKEFLAGS/MAKEFLAGS/" /etc/makepkg.conf
+# sed -i "s/-j2/-j$(nproc)/;s/^#MAKEFLAGS/MAKEFLAGS/" /etc/makepkg.conf
 
 # Refresh keyrings
 pacman --noconfirm -Sy archlinux-keyring
