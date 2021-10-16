@@ -9,7 +9,7 @@ sed -i "/$name/d" /etc/sudoers
 echo -e "%wheel ALL=(ALL) NOPASSWD: ALL # Edited by $name" >> /etc/sudoers
 
 # Pacman conf adjustments
-sed -i "s/#Color/Color/" /etc/pacman.conf
+sed -i "s/^#ParallelDownloads = 8$/ParallelDownloads = 5/;s/^#Color$/Color/" /etc/pacman.conf
 sed -i "s/#VerbosePkgLists/ILoveCandy/" /etc/pacman.conf
 grep -q "# Edited by $name" /etc/pacman.conf || printf "\n# Edited by %s\n%s\n%s" "$name" "[multilib]" "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
 
